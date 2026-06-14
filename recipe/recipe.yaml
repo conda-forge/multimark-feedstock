@@ -12,7 +12,7 @@ source:
     - patches/use-system-cmark-gfm.patch
 
 build:
-  number: 0
+  number: 1
   skip:
     - linux and aarch64
     - osx and arm64
