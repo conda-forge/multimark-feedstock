@@ -12,7 +12,7 @@ source:
     - patches/use-system-cmark-gfm.patch
 
 build:
-  number: 1
+  number: 2
   skip:
     - linux and aarch64
     - osx and arm64
@@ -23,6 +23,11 @@ build:
 
 requirements:
   build:
+    - if: build_platform != host_platform
+      then:
+        - python
+        - cross-python_${{ host_platform }}
+        - cffi
     - ${{ compiler('c') }}
     - ${{ stdlib('c') }}
   host:
