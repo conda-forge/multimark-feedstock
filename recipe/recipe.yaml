@@ -1,5 +1,5 @@
 context:
-  version: "0.3.2"
+  version: "0.4.0"
 
 package:
   name: multimark
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://github.com/posit-dev/multimark/archive/refs/tags/v${{ version }}.tar.gz
-  sha256: 150bdd1ecd5af3c4b4bc12a099139862d9af6b51c48b3a229f5470a845075d00
+  sha256: d6676e198dee94f77e9d87cf248af58541f3abba0df5fe03cb637f7b991323c5
   patches:
     - patches/use-system-cmark-gfm.patch
 
 build:
-  number: 1
+  number: 0
   skip:
     - linux and aarch64
     - osx and arm64
