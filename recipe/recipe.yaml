@@ -8,8 +8,6 @@ package:
 source:
   url: https://github.com/posit-dev/multimark/archive/refs/tags/v${{ version }}.tar.gz
   sha256: 11fdf87a2a3b8571b9c167f13bb18b18f016c11aad5adb7633d6847af27f666c
-  patches:
-    - patches/use-system-cmark-gfm.patch
 
 build:
   number: 0
@@ -36,11 +34,9 @@ requirements:
     - setuptools >=68
     - setuptools_scm >=6.2
     - cffi >=1.15
-    - cmark-gfm ==0.29.0.gfm.13[build_number='>=1']
   run:
     - python
     - cffi >=1.15
-    - cmark-gfm ==0.29.0.gfm.13[build_number='>=1']
     - click >=8.0
 
 tests:
@@ -49,7 +45,16 @@ tests:
         - multimark
       pip_check: true
   - script:
-      - python -c "import multimark; assert 'math inline' in multimark.markdown_to_html('\x24x\x24', extensions=['math'])"
+      - python -m pytest tests/test_math.py tests/test_regressions.py tests/test_threads.py -v
+    files:
+      source:
+        - tests/conftest.py
+        - tests/test_math.py
+        - tests/test_regressions.py
+        - tests/test_threads.py
+    requirements:
+      run:
+        - pytest
   - if: unix
     then:
       - script:
