@@ -13,7 +13,6 @@ build:
   number: 0
   skip:
     - linux and aarch64
-    - osx and arm64
   script:
     content: python -m pip install . -vv --no-deps --no-build-isolation
     env:
