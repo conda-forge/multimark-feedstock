@@ -10,10 +10,9 @@ source:
   sha256: 11fdf87a2a3b8571b9c167f13bb18b18f016c11aad5adb7633d6847af27f666c
 
 build:
-  number: 0
+  number: 1
   skip:
     - linux and aarch64
-    - osx and arm64
   script:
     content: python -m pip install . -vv --no-deps --no-build-isolation
     env:
